@@ -1,128 +1,112 @@
----
-title: "Business Intelligence Lab Submission Markdown"
-author: "<Challengers>"
-date: "<13th October 2023>"
-output:
-  github_document: 
-    toc: yes
-    toc_depth: 4
-    fig_width: 6
-    fig_height: 4
-    df_print: default
-editor_options:
-  chunk_output_type: console
----
+Business Intelligence Lab Submission Markdown
+================
+<Challengers>
+\<13th October 2023\>
+
+- [Student Details](#student-details)
+- [Setup Chunk](#setup-chunk)
+- [\<Loading a dataset\>](#loading-a-dataset)
+- [\<Different Sentiments that were performed in the
+  data\>](#different-sentiments-that-were-performed-in-the-data)
 
 # Student Details
 
 |                                                   |                                                                                                                                                                                                                                                                                                                                                              |                |
-|------------------|------------------------------------|------------------|
+|---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|
 | **Student ID Numbers and Names of Group Members** | *\<list one student name, group, and ID per line; you should be between 2 and 5 members per group\>* \| \| 1. 124255 - Challengers - Natasha Wairimu Gichira \| 2. 124562 - Challengers - Gitonga Ryan Munene \| \| 3. 120415 - Challengers - Emmanuel Agre \| \| 4. 118211 - Challengers - Fredrick Koech \| \| 5. 124422 - Challengers - Dennis Muriuki \| |                |
 |                                                   | **GitHub Classroom Group Name**                                                                                                                                                                                                                                                                                                                              | Challengers \| |
 | **Course Code**                                   | BBT4206                                                                                                                                                                                                                                                                                                                                                      |                |
 | **Course Name**                                   | Business Intelligence II                                                                                                                                                                                                                                                                                                                                     |                |
 | **Program**                                       | Bachelor of Business Information Technology                                                                                                                                                                                                                                                                                                                  |                |
-| **Semester Duration**                             | 21^st^ August 2023 to 28^th^ November 2023                                                                                                                                                                                                                                                                                                                   |                |
+| **Semester Duration**                             | 21<sup>st</sup> August 2023 to 28<sup>th</sup> November 2023                                                                                                                                                                                                                                                                                                 |                |
 
 # Setup Chunk
 
-**Note:** the following "*KnitR*" options have been set as the defaults:\
+**Note:** the following “*KnitR*” options have been set as the
+defaults:  
 `knitr::opts_chunk$set(echo = TRUE, warning = FALSE, eval = TRUE, collapse = FALSE, tidy.opts = list(width.cutoff = 80), tidy = TRUE)`.
 
-More KnitR options are documented here <https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html> and here <https://yihui.org/knitr/options/>.
+More KnitR options are documented here
+<https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html> and
+here <https://yihui.org/knitr/options/>.
 
-```{r setup, include=FALSE}
-library(formatR)
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, eval = TRUE,
-                      collapse = FALSE, tidy = TRUE)
-```
+**Note:** the following “*R Markdown*” options have been set as the
+defaults:
 
-**Note:** the following "*R Markdown*" options have been set as the defaults:
-
-> output:\
-> \
-> github_document:\
-> toc: yes\
-> toc_depth: 4\
-> fig_width: 6\
-> fig_height: 4\
-> df_print: default\
-> \
-> editor_options:\
+> output:  
+>   
+> github_document:  
+> toc: yes  
+> toc_depth: 4  
+> fig_width: 6  
+> fig_height: 4  
+> df_print: default  
+>   
+> editor_options:  
 > chunk_output_type: console
 
 # \<Loading a dataset\>
 
-Describe the code chunk here: Here the dataset is being loaded from the root folder
+Describe the code chunk here: Here the dataset is being loaded from the
+root folder
 
-```{r Your Second Code Chunk}
+``` r
 # Fill this with R related code that will be executed when the R markdown file
 # is rendered using knitR
 library(readr)
-# STEP 3. Load the Dataset ----
-## student_performance_dataset <-
-  ## read_csv("data/20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset copy.CSV",)
+# STEP 3. Load the Dataset ---- student_performance_dataset <-
+# read_csv('data/20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset
+# copy.CSV',)
 ```
 
-Describe the next code chunk here: Here the overall sentiments are applied after the relationship between the likes/wishes are put into place
+Describe the next code chunk here: Here the overall sentiments are
+applied after the relationship between the likes/wishes are put into
+place
 
-```{r Your Third Code Chunk}
+``` r
 # Fill this with other R related code that will be executed when the R markdown
 # file is rendered using knitR
 library(readr)
 # Inner Join the Likes/Wishes with the Corresponding Sentiment(s) ----
-## evaluation_likes_filtered_nrc <- evaluation_likes_filtered %>%
-  ## inner_join(get_sentiments("nrc"),
-             ## by = join_by(`Likes (tokenized)` == word),
-             ## relationship = "many-to-many")
+# evaluation_likes_filtered_nrc <- evaluation_likes_filtered %>%
+# inner_join(get_sentiments('nrc'), by = join_by(`Likes (tokenized)` == word),
+# relationship = 'many-to-many')
 
 ## evaluation_wishes_filtered_nrc <- evaluation_wishes_filtered %>%
-  ## inner_join(get_sentiments("nrc"),
-             ## by = join_by(`Wishes (tokenized)` == word),
-             ## relationship = "many-to-many")
+## inner_join(get_sentiments('nrc'), by = join_by(`Wishes (tokenized)` ==
+## word), relationship = 'many-to-many')
 
 
 # Fill this with other R related code that will be executed when the R markdown
 # file is rendered using knitR
 library(readr)
-# Overall Sentiment ----
-## Evaluation Likes ----
-## nrc_likes_plot <- evaluation_likes_filtered_nrc %>%
-  ## group_by(sentiment) %>%
-  # You can filter by the class group if you wish
-  # filter(`Class Group` == "A") %>%
-  ## summarise(word_count = n()) %>%
-  ## ungroup() %>%
- ## mutate(sentiment = reorder(sentiment, word_count)) %>%
-  # `fill = -word_count` is used to make the larger bars darker
-  ## ggplot(aes(sentiment, word_count, fill = -word_count)) +
-  ## geom_col() +
-  ## guides(fill = FALSE) + # Turn off the legend
-  ## blue_grey_theme() +
-  ## labs(x = "Sentiment", y = "Word Count") +
-  # scale_y_continuous(limits = c(0, 15000)) + #Hard code the axis limit
-  ## ggtitle("Lexicon-Based Sentiment Analysis of Course Evaluation Likes") +
-  ## coord_flip()
-
+# Overall Sentiment ---- Evaluation Likes ---- nrc_likes_plot <-
+# evaluation_likes_filtered_nrc %>% group_by(sentiment) %>% You can filter by
+# the class group if you wish filter(`Class Group` == 'A') %>%
+# summarise(word_count = n()) %>% ungroup() %>% mutate(sentiment =
+# reorder(sentiment, word_count)) %>% `fill = -word_count` is used to make the
+# larger bars darker ggplot(aes(sentiment, word_count, fill = -word_count)) +
+# geom_col() + guides(fill = FALSE) + # Turn off the legend blue_grey_theme() +
+# labs(x = 'Sentiment', y = 'Word Count') + scale_y_continuous(limits = c(0,
+# 15000)) + #Hard code the axis limit ggtitle('Lexicon-Based Sentiment Analysis
+# of Course Evaluation Likes') + coord_flip()
 ```
 
 # \<Different Sentiments that were performed in the data\>
 
-Describe the code chunk here: Here the Frequency sentiment is being performed
+Describe the code chunk here: Here the Frequency sentiment is being
+performed
 
-```{r Your Fifth Code Chunk}
+``` r
 # Fill this with R related code that will be executed when the R markdown file
 # is rendered using knitR
 library(readr)
-# Frequency Sentiment per Group and per Gender ----
-## nrc_likes_chord <-  evaluation_likes_filtered_nrc %>%
-  # filter(decade != "NA" & !sentiment %in% c("positive", "negative")) %>%
-  ## count(sentiment, `Class Group`) %>%
- ## group_by(`Class Group`, sentiment) %>%
-  ## summarise(sentiment_sum = sum(n)) %>%
-  ## filter(sentiment_sum > 10) %>%
-  ## mutate(sentiment = reorder(sentiment, sentiment_sum)) %>%
-  ## ungroup()
+# Frequency Sentiment per Group and per Gender ---- nrc_likes_chord <-
+# evaluation_likes_filtered_nrc %>% filter(decade != 'NA' & !sentiment %in%
+# c('positive', 'negative')) %>% count(sentiment, `Class Group`) %>%
+# group_by(`Class Group`, sentiment) %>% summarise(sentiment_sum = sum(n)) %>%
+# filter(sentiment_sum > 10) %>% mutate(sentiment = reorder(sentiment,
+# sentiment_sum)) %>% ungroup()
 ```
 
 **etc.** as per the lab submission requirements.

@@ -18,17 +18,17 @@ editor_options:
 +---------------------------------------------------+------------------------------------------------------------------------------------------------------+
 | **Student ID Numbers and Names of Group Members** | *\<list one student name, group, and ID per line; you should be between 2 and 5 members per group\>* |
 |                                                   |                                                                                                      |
-|                                                   | 1.  ID - Group - Name                                                                                |
+|                                                   | 1.  124255 - Challengers - Natasha Wairimu Gichira                                                                                |
 |                                                   |                                                                                                      |
-|                                                   | 2.  ID - Group - Name                                                                                |
+|                                                   | 2.  124562 - Challengers -  Gitonga Ryan Munene                                                                                |
 |                                                   |                                                                                                      |
-|                                                   | 3.  ID - Group - Name                                                                                |
+|                                                   | 3.  120415 - Challengers - Emmanuel Agre                                                                                |
 |                                                   |                                                                                                      |
-|                                                   | 4.  ID - Group - Name                                                                                |
+|                                                   | 4.  118211 - Challengers - Fredrick Koech                                                                                |
 |                                                   |                                                                                                      |
-|                                                   | 5.  ID - Group - Name                                                                                |
+|                                                   | 5.  124422 - Challengers -  Dennis Muriuki                                                                                |
 +---------------------------------------------------+------------------------------------------------------------------------------------------------------+
-| **GitHub Classroom Group Name**                   |                                                                                                      |
+| **GitHub Classroom Group Name**                   | Challengers                                                                                                      |
 +---------------------------------------------------+------------------------------------------------------------------------------------------------------+
 | **Course Code**                                   | BBT4206                                                                                              |
 +---------------------------------------------------+------------------------------------------------------------------------------------------------------+
@@ -66,25 +66,29 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, eval = TRUE,
 > editor_options:\
 > chunk_output_type: console
 
-# \<Provide an Appropriate Title Here\>
+# \<Loading a dataset>
 
 Describe the code chunk here:
-
+Here the dataset is being loaded from the root folder
 ```{r Your Second Code Chunk}
 # Fill this with R related code that will be executed when the R markdown file
 # is rendered using knitR
 library(readr)
+# STEP 3. Load the Dataset ----
+student_performance_dataset <-
+  read_csv("data/20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset copy.CSV",)
 ```
 
 Describe the next code chunk here:
-
+Here the knitR function is installed with its dependencies
 ```{r Your Third Code Chunk}
 # Fill this with other R related code that will be executed when the R markdown
 # file is rendered using knitR
 library(readr)
-```
+```## knitr - for dynamic report generation ----
+if (!is.element("knitr", installed.packages()[, 1])) {
+  install.packages("knitr", dependencies = TRUE)
 
-## \<You Can Have a Sub-Title Here\>
 
 ```{r Your Fourth Code Chunk}
 # Fill this with other R related code that will be executed when the R markdown
